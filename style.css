@@ -44,7 +44,7 @@ button{
 @media screen and (max-width: 600px) {
     .page {
         width: 300px;
-        
+        background-color: blue;
         height: 550px;
         margin-top: 10%;
         }
