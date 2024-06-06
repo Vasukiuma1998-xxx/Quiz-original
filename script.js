@@ -56,8 +56,8 @@ const showquestion=()=>{
  const showanswer=()=>{
     document.getElementById("answercontainer").innerHTML=selectedquestion.map((question,qno)=>
    `
-    <div>
-    <p>Question  ${qno+1}:${question.question}</p>
+    <div >
+    <p style="margin-top: 10px;">Question  ${qno+1}:${question.question}</p>
 
     ${question.answers.map((ans,ind)=>
     {
@@ -145,7 +145,16 @@ const initialize = (path) => {
    }
    else if(path=="Result.html"){
     document.getElementById("mark").textContent=`Your score is ${mark}/${ttlquestioncount}`
-    //showanswer()
+
+    document.getElementById("viewanswer").addEventListener("click",()=>{
+
+        Loadpage("Answer.html")
+    }
+    )
+   
+}
+else if(path=="Answer.html"){
+    showanswer()
 }
 
 }
