@@ -4,6 +4,7 @@ let selectedquestion=[]
 let currentindex=0;
 let mark=0;
 let userselectedanswer=[]
+let ttltime=300;
 
 const selectRandomquestion=()=>{
     let shuffledquestion=allquestions.sort(()=>
@@ -66,6 +67,7 @@ const showquestion=()=>{
             color="green"
         }
         else if(userselectedanswer[qno]==ind )
+
             {
                 color="red"
             }
@@ -100,6 +102,7 @@ const initialize = (path) => {
     })
    }
    else if(path=="Quiz.html"){
+    showtimer()
     showquestion()
 
     document.getElementById("next").addEventListener('click',()=>{
@@ -159,7 +162,30 @@ else if(path=="Answer.html"){
 
 }
 
+// format timer
+const formattimer=(duration)=>{
+    let seconds=Math.floor(duration % 60);
+    let minutes=Math.floor((duration/60)%60);
+    let hours=Math.floor(duration/(60*60));
 
+    return `${String(hours).padStart(2,0)}:${String(minutes).padStart(2,0)}:${String(seconds).padStart(2,0)}`
+}
+
+// timer
+const showtimer=()=>{
+    const timer=document.getElementById("timer")
+    timer.innerHTML= formattimer(ttltime)
+
+    let timeInterval=setInterval(()=>{
+        ttltime--;
+        console.log("ttltime:",ttltime)
+        timer.innerText=formattimer(ttltime);
+        if(ttltime==0){
+            clearInterval(timeInterval);
+            Loadpage("Result.html")
+        }
+    },1000)
+}
 
 const Loadpage = (path) => {
     fetch(`./pages/${path}`)
