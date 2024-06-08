@@ -9,7 +9,7 @@ let ttltime=300;
 const selectRandomquestion=()=>{
     let shuffledquestion=allquestions.sort(()=>
         {
-            return Math.floor(Math.random()*10)
+            return 5-Math.floor(Math.random()*10)
         })
         selectedquestion=shuffledquestion.slice(0,ttlquestioncount)
         
@@ -107,7 +107,10 @@ const initialize = (path) => {
 
     document.getElementById("next").addEventListener('click',()=>{
        let selectedAnswer=document.querySelector('input[name="answer"]:checked')
-
+       if (!selectedAnswer) {
+        alert("Please select an answer before proceeding."); // Added this check
+        return;
+    }
         if(selectedAnswer.value==selectedquestion[currentindex].correct)
             {
                 mark++;
@@ -133,6 +136,10 @@ const initialize = (path) => {
     })
     document.getElementById("submit").addEventListener("click",()=>{
         let selectedAnswer=document.querySelector('input[name="answer"]:checked')
+        if (!selectedAnswer) {
+            alert("Please select an answer before submitting."); // Added this check
+            return;
+        }
         if(selectedAnswer.value==selectedquestion[currentindex].correct)
             {
                 mark++;
@@ -168,7 +175,7 @@ const formattimer=(duration)=>{
     let minutes=Math.floor((duration/60)%60);
     let hours=Math.floor(duration/(60*60));
 
-    return `${String(hours).padStart(2,0)}:${String(minutes).padStart(2,0)}:${String(seconds).padStart(2,0)}`
+    return ` ${String(minutes).padStart(2,0)}:${String(seconds).padStart(2,0)}`
 }
 
 // timer

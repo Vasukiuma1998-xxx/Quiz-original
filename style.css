@@ -30,6 +30,13 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
+#time h1{
+    color: white;
+    text-align: end;
+    margin-top: 15%;
+    font-size: 30px;
+}
+
 
 .inputstyle:focus {
     border-color: #66afe9;
@@ -61,6 +68,9 @@ button{
     font-weight: bold;
     border-radius: 10px;
     border: none;
+}
+#quizpage{
+    margin-top: 0%;
 }
 #instructionpage,#quizpage{
     padding: 10px;
